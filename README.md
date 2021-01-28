@@ -13,11 +13,11 @@ perl 建议选择开源的 Strawberry ， 不要选择商业版的 ActivePerl，
 32位选择 VS2015 x86 本机工具命令提示符
 64位选择 VS2015 X64 本机工具命令提示符
 
-# Windows下编译32位静态库
+### Windows下编译32位静态库
 perl Configure  VC-WIN32  no-shared
 nmake
 
-# Windows下编译64位静态库
+### Windows下编译64位静态库
 perl Configure  VC-WIN64A  no-shared
 nmake
 
