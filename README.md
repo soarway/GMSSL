@@ -1,26 +1,30 @@
 
-## LINUX 下编译 -d 代表编译debug版本， no-shared代表生成静态库
+## 一、LINUX 下编译
+使用 -d 代表编译debug版本， no-shared代表生成静态库
 ./config  no-shared  -d
 make
 make  install
 
-### 编译静态库增加参数 no-shared  
-## perl选择开源的 Strawberry ， 不能选择商业版的 ActivePerl
+## 二、Windows下编译
 
-## Windows下编译32位静态库
-perl Configure  VC-WIN32  no-shared
-nmake
-
-## Windows下编译64位静态库
-perl Configure  VC-WIN64A  no-shared
-nmake
-
+perl 建议选择开源的 Strawberry ， 不要选择商业版的 ActivePerl，要不然会碰到其他的小问题需要解决
+编译静态库增加参数 no-shared  
 执行nmake需要从开始菜单中选择 VS 文件夹中的控制台应用，我这里是Visual Studio 2015
 32位选择 VS2015 x86 本机工具命令提示符
 64位选择 VS2015 X64 本机工具命令提示符
 
+# Windows下编译32位静态库
+perl Configure  VC-WIN32  no-shared
+nmake
 
-## 一、生成根证书
+# Windows下编译64位静态库
+perl Configure  VC-WIN64A  no-shared
+nmake
+
+
+
+
+## 三、生成根证书
     1、生成私钥key
     $ gmssl.exe  ecparam -genkey -name sm2p256v1 -text -out Root.key -config  ./openssl.cnf
  
@@ -31,7 +35,7 @@ nmake
     $ gmssl.exe x509 -req -sm3 -days 3650 -in Root.req -signkey Root.key -out Root.crt 
 
 
-## 二、生成客户端证书
+## 四、生成客户端证书
     1、生成私钥key
     $ gmssl.exe  ecparam -genkey -name sm2p256v1 -text -out Client.key -config  ./openssl.cnf
  
@@ -49,7 +53,7 @@ nmake
  
  
  
-## 三、生成服务器证书
+## 五、生成服务器证书
     1、生成私钥key
     $ gmssl.exe ecparam -genkey -name sm2p256v1 -text -out Server.key -config ./openssl.cnf
 
@@ -62,7 +66,7 @@ nmake
     4、证书验证
     $ gmssl.exe verify -CAfile Root.crt Server.crt
 
-## 四、测试证书
+## 六、测试证书
 把生成的证书放到根目录中的apps目录，从控制台执行如下命令， 先执行服务器端，再执行客户端
 $ gmssl.exe s_client -debug -status -security_debug          -config "./openssl.cnf" -port "9999" -CAfile ".\\certs\\CA.crt" -cert ".\\certs\\ClientSign.crt"  -key ".\\certs\\ClientSign.key" -dcert ".\\certs\\ClientEnc.crt" -dkey ".\\certs\\ClientEnc.key"
 $ gmssl.exe s_server -debug -status_verbose -security_debug  -config "./openssl.cnf" -port "9999" -CAfile ".\\certs\\CA.crt" -cert ".\\certs\\ServerSign.crt"  -key ".\\certs\\ServerSign.key" -dcert ".\\certs\\ServerEnc.crt" -dkey ".\\certs\\ServerEnc.key"
