@@ -72,7 +72,7 @@ perl 建议选择开源的 Strawberry ， 不要选择商业版的 ActivePerl，
 
 	把生成的证书放到根目录中的apps目录，从控制台执行如下命令， 先执行服务器端，再执行客户端
 
-    $ gmssl.exe s_client -debug -status -security_debug          -config "./openssl.cnf" -port "9999" -CAfile ".\\certs\\CA.crt" -cert ".\\certs\\ClientSign.crt"  -key ".\\certs\\ClientSign.key" -dcert ".\\certs\\ClientEnc.crt" -dkey ".\\certs\\ClientEnc.key"
-    $ gmssl.exe s_server -debug -status_verbose -security_debug  -config "./openssl.cnf" -port "9999" -CAfile ".\\certs\\CA.crt" -cert ".\\certs\\ServerSign.crt"  -key ".\\certs\\ServerSign.key" -dcert ".\\certs\\ServerEnc.crt" -dkey ".\\certs\\ServerEnc.key"
+    $ gmssl.exe s_client -debug -status -security_debug          -config "./openssl.cnf" -port "9999" -CAfile ".\\certs\\CA.crt" -cert ".\\certs\\ClientSign.crt"  -key ".\\certs\\ClientSign.key" -dcert ".\\certs\\ClientEnc.crt" -dkey ".\\certs\\ClientEnc.key" -gmtls
+    $ gmssl.exe s_server -debug -status_verbose -security_debug  -config "./openssl.cnf" -port "9999" -CAfile ".\\certs\\CA.crt" -cert ".\\certs\\ServerSign.crt"  -key ".\\certs\\ServerSign.key" -dcert ".\\certs\\ServerEnc.crt" -dkey ".\\certs\\ServerEnc.key" -gmtls
 
 
