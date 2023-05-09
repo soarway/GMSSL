@@ -6,6 +6,8 @@
     ./config  no-shared  -d
     make
     make  install
+    
+    如果是编译Tongsuo库，需要支持paillier同态加密算法的话，需要修改Configure文件，把里面Disabled的paillier相关的内容删除后，再执行./config no-shared
 
 ## 二、Windows下编译
 
